@@ -9,7 +9,7 @@ import UIKit
 
 class PersonListController: UITableViewController {
     
-    var personsList = Person.getContactsList()
+    var personsList: [Person] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,21 +17,16 @@ class PersonListController: UITableViewController {
 
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-
     // MARK: - Настройка строк
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return personsList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "personListCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "firstPersonListCell", for: indexPath)
         
         let person = personsList[indexPath.row]
-        cell.textLabel?.text = "\(person.firstName) \(person.lastName)"
+        cell.textLabel?.text = person.fullName
 
         return cell
     }

@@ -34,7 +34,6 @@ extension Person {
             persons.append(person)
         }
         return persons
-        
     }
 }
 
